@@ -65,7 +65,10 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'cors' => \App\Http\Middleware\Cors::class,
         'has.role' => \Caffeinated\Shinobi\Middleware\UserHasRole::class,
-        'has.permission' => \Caffeinated\Shinobi\Middleware\UserHasPermission::class,
+
+        //Leer un poco mas la doumentacion, esta ultima linea solo se usa en versiones anteriores a la 5.4
+        //En versiones superiores solo se usa el can
+        //'has.permission' => \Caffeinated\Shinobi\Middleware\UserHasPermission::class,
     ];
 
     /**

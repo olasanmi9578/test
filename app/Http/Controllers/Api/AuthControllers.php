@@ -10,13 +10,12 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 
-use Validator;
+use Validator; //Por que sino la estas utilizando la llamas?
 use App\User; 
 
 class AuthControllers extends Controller
 {
     //construct
-
     public function __construct (){
     	$this->successStatus = 200;
     	$this->errorStatus = 401;
@@ -26,10 +25,15 @@ class AuthControllers extends Controller
 
     //register function
     public function registers (RegisterRequest $request){
+        
     	$this->user->name = $request->username;
 		$this->user->email = $request->email;
 		$this->user->password = Hash::make($request->password);
 		$this->user->save();
+
+        //User::create($request->all()); //4 lineas donde solo puede utilizar una!???
+
+
 		return response()->json(['success' => 'Usuario registrado correctamente'], $this->successStatus);
     }
 

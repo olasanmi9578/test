@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+//En API-REST entre mas corta sea la ruta es mejor asi que el tema de los prefix hay que omitirlos
 //api routes prefix
 Route::prefix('v1')->group(function(){
 	//auth route
@@ -35,6 +37,7 @@ Route::prefix('v1')->group(function(){
 					Route::get('user/revoke/{id}/{role}', 'Api\RolesControllers@revokeById');
 					Route::get('user/revoke/byslug/{id}/{slug}', 'Api\RolesControllers@revokeBySlug');
 				});
-			//
-		});
+		});		
 });
+
+Route::apiResource('roles', 'ASanchez85\RoleController');
