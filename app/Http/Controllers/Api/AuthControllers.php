@@ -39,7 +39,7 @@ class AuthControllers extends Controller
 	    if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
 	    	//set access tokens and return this data.
 		    $this->loginUser = Auth::user(); 
-		    $success['token'] =  $this->loginUser->createToken('AppName')-> accessToken; 
+		    $success['token'] =  $this->loginUser->createToken('AppName')-> accessToken;
 		    	return response()->json(['success' => $success], $this->successStatus); 
 	    } else {
 	    	//if no in bbdd credentials 
